@@ -103,4 +103,14 @@ const units = ref([
 .table-responsive {
   overflow: visible;
 }
+
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .table {
+    min-width: 760px;
+  }
+}
 </style>
