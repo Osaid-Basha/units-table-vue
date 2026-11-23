@@ -6,6 +6,7 @@
           type="checkbox" 
           class="form-check-input"
           v-model="isChecked"
+          :aria-label="t('selectUnit')"
         />
         <span class="row-number">{{ index + 1 }}</span>
       </div>
@@ -17,7 +18,7 @@
           <path d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z" />
           <circle cx="12" cy="10" r="2" />
         </svg>
-        <span class="unit-name">{{ unit.name }}</span>
+        <span class="unit-name">{{ unit.name }}{{ unit.vehicle ? ' - ' + t(unit.vehicle) : '' }}</span>
       </div>
     </td>
 
@@ -27,7 +28,7 @@
 
     <td>
       <span class="status-badge">
-        {{ unit.status }}
+        {{ t(unit.status) }}
       </span>
     </td>
 
@@ -47,8 +48,10 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import ActionDropdown from './ActionDropdown.vue'
 
+const { t } = useI18n({ useScope: 'global' })
 defineProps({
   unit: Object,
   index: Number

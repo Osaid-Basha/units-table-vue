@@ -8,13 +8,14 @@
               type="checkbox" 
               class="form-check-input"
               v-model="headerCheckbox"
+              :aria-label="t('selectAll')"
             />
           </th>
-          <th>الاسم</th>
-          <th>آخر تحديث</th>
-          <th>الوضع الحالي</th>
-          <th>انتهاء الرخصة</th>
-          <th>السائق</th>
+          <th>{{ t('name') }}</th>
+          <th>{{ t('lastUpdate') }}</th>
+          <th>{{ t('status') }}</th>
+          <th>{{ t('licenseExpiry') }}</th>
+          <th>{{ t('driver') }}</th>
           <th style="width: 60px;"></th>
         </tr>
       </thead>
@@ -33,32 +34,37 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import UnitRow from './UnitRow.vue'
 
+const { t } = useI18n({ useScope: 'global' })
 const headerCheckbox = ref(false)
 
 const units = ref([
   {
     id: 1,
-    name: '32-6207-6 - بيكانتو',
+    name: '32-6207-6',
+    vehicle: 'vehiclePicanto',
     lastUpdate: '08:49:14 2023-04-28',
-    status: 'مفعل',
+    status: 'active',
     licenseExpiry: '-',
     driverName: '-'
   },
   {
     id: 2,
-    name: '32-0757-7 - كيا',
+    name: '32-0757-7',
+    vehicle: 'vehicleKia',
     lastUpdate: '08:49:14 2023-04-28',
-    status: 'مفعل',
+    status: 'active',
     licenseExpiry: '-',
     driverName: '-'
   },
   {
     id: 3,
-    name: 'مرسيدس - 412 - 0367',
+    name: '412 - 0367',
+    vehicle: 'vehicleMercedes',
     lastUpdate: '08:49:14 2023-04-28',
-    status: 'مفعل',
+    status: 'active',
     licenseExpiry: '-',
     driverName: '-'
   },
@@ -66,23 +72,25 @@ const units = ref([
     id: 4,
     name: '20363A - Mounis 5',
     lastUpdate: '08:49:14 2023-04-28',
-    status: 'مفعل',
+    status: 'active',
     licenseExpiry: '2025-06-09',
     driverName: 'مؤنس محمود محمد احمد'
   },
   {
     id: 5,
-    name: 'فيفو 1126',
+    name: '1126',
+    vehicle: 'vehicleVivo',
     lastUpdate: '08:49:14 2023-04-28',
-    status: 'مفعل',
+    status: 'active',
     licenseExpiry: '-',
     driverName: '-'
   },
   {
     id: 6,
-    name: '8630 - ايفيكو شحن صغير',
+    name: '8630',
+    vehicle: 'vehicleIveco',
     lastUpdate: '08:49:14 2023-04-28',
-    status: 'مفعل',
+    status: 'active',
     licenseExpiry: '2026-03-22',
     driverName: 'عامر/امجد'
   }
